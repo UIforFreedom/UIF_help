@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[2535],{5641:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"\u57fa\u4e8e QUIC \u7684\u4ee3\u7406\u534f\u8bae","permalink":"/UIF_help/blog/quic"},{"title":"Welcome","permalink":"/UIF_help/blog/welcome"}]}')}}]);

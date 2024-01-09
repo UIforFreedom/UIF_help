@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[2763],{7011:e=>{e.exports=JSON.parse('{"label":"UDP","permalink":"/UIF_help/blog/tags/udp","allTagsPath":"/UIF_help/blog/tags","count":1}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[1632],{8548:e=>{e.exports=JSON.parse('{"label":"WebUI \u7ffb\u5899","permalink":"/UIF_help/blog/tags/web-ui-\u7ffb\u5899","allTagsPath":"/UIF_help/blog/tags","count":1}')}}]);

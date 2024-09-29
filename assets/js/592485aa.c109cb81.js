@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[1260],{6848:e=>{e.exports=JSON.parse('{"label":"Sing-Box \u5c4f\u853d\u5e7f\u544a","permalink":"/UIF_help/blog/tags/sing-box-\u5c4f\u853d\u5e7f\u544a","allTagsPath":"/UIF_help/blog/tags","count":1}')}}]);

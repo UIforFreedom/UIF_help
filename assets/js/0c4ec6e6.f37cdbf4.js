@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[7639],{1614:e=>{e.exports=JSON.parse('{"label":"Sing-Box OpenWrt \u7ffb\u5899","permalink":"/UIF_help/blog/tags/sing-box-open-wrt-\u7ffb\u5899","allTagsPath":"/UIF_help/blog/tags","count":1}')}}]);

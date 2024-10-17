@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[4450],{9733:e=>{e.exports=JSON.parse('{"permalink":"/UIF_help/blog/tags/\u53ef\u7528\u7684\u7ffb\u5899\u8282\u70b9","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

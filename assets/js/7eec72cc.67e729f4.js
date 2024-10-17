@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[4846],{5897:e=>{e.exports=JSON.parse('{"label":"\u600e\u4e48\u9632\u6b62 DNS \u6cc4\u9732","permalink":"/UIF_help/blog/tags/\u600e\u4e48\u9632\u6b62-dns-\u6cc4\u9732","allTagsPath":"/UIF_help/blog/tags","count":1}')}}]);

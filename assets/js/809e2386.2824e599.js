@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[814],{73134:e=>{e.exports=JSON.parse('{"permalink":"/UIF_help/blog/tags/ios-\u4e0a\u4f7f\u7528\u94fe\u5f0f\u4ee3\u7406","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

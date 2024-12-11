@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[7749],{87074:e=>{e.exports=JSON.parse('{"label":"clash \u94fe\u5f0f\u4ee3\u7406","permalink":"/UIF_help/blog/tags/clash-\u94fe\u5f0f\u4ee3\u7406","allTagsPath":"/UIF_help/blog/tags","count":1}')}}]);

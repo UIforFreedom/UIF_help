@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[8930],{4991:e=>{e.exports=JSON.parse('{"label":"\u4ec0\u4e48\u662f\u94fe\u5f0f\u4ee3\u7406","permalink":"/UIF_help/blog/tags/\u4ec0\u4e48\u662f\u94fe\u5f0f\u4ee3\u7406","allTagsPath":"/UIF_help/blog/tags","count":1}')}}]);

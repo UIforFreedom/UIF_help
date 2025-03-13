@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[6844],{55036:e=>{e.exports=JSON.parse('{"label":"Linux \u8bbe\u7f6e\u7cfb\u7edf\u4ee3\u7406","permalink":"/UIF_help/blog/tags/linux-\u8bbe\u7f6e\u7cfb\u7edf\u4ee3\u7406","allTagsPath":"/UIF_help/blog/tags","count":1}')}}]);

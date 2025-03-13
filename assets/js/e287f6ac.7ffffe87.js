@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[4913],{28328:e=>{e.exports=JSON.parse('{"label":"Sing-Box Macos \u5ba2\u6237\u7aef","permalink":"/UIF_help/blog/tags/sing-box-macos-\u5ba2\u6237\u7aef","allTagsPath":"/UIF_help/blog/tags","count":1}')}}]);

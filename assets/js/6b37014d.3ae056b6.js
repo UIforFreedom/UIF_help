@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[9632],{93575:e=>{e.exports=JSON.parse('{"permalink":"/UIF_help/blog/tags/clash-\u4e2d\u8f6c","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

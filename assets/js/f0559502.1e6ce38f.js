@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[7195],{37910:e=>{e.exports=JSON.parse('{"label":"Sing-Box UI","permalink":"/UIF_help/blog/tags/sing-box-ui","allTagsPath":"/UIF_help/blog/tags","count":1}')}}]);

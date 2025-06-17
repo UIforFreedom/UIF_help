@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[600],{20664:e=>{e.exports=JSON.parse('{"label":"Free VPN Server","permalink":"/UIF_help/blog/tags/free-vpn-server","allTagsPath":"/UIF_help/blog/tags","count":1}')}}]);

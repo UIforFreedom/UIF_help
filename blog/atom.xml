@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://ui4freedom.org/UIF_help/blog</id>
+    <title>UIF Blog</title>
+    <updated>2024-11-30T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://ui4freedom.org/UIF_help/blog"/>
+    <subtitle>UIF Blog</subtitle>
+    <icon>https://ui4freedom.org/UIF_help/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[如何让代理软件接管电脑的网络流量？从而实现翻墙]]></title>
+        <id>https://ui4freedom.org/UIF_help/blog/inbounds</id>
+        <link href="https://ui4freedom.org/UIF_help/blog/inbounds"/>
+        <updated>2024-11-30T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[有了翻墙的服务器节点后，还需要让代理软件接管电脑的网络流量，然后才能将你的流量转发到翻墙节点，从而实现翻墙。]]></summary>
+        <content type="html"><![CDATA[<p>有了翻墙的服务器节点后，还需要让代理软件接管电脑的网络流量，然后才能将你的流量转发到翻墙节点，从而实现翻墙。</p>
+<p>本文介绍两种常用接管流量的方法：<code>HTTP/Socks</code> 和 <code>Tun VPN</code>，并总结优点和缺点，选择适合自己的方法。</p>
+<p><img decoding="async" loading="lazy" alt="入站" src="https://ui4freedom.org/UIF_help/assets/images/1-38fff19ce0e8c311af47daafee03250d.png" width="2566" height="620" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="httpsocks">HTTP/Socks<a href="https://ui4freedom.org/UIF_help/blog/inbounds#httpsocks" class="hash-link" aria-label="Direct link to HTTP/Socks" title="Direct link to HTTP/Socks" translate="no">​</a></h2>
+<p>如果你使用的是 Windows 操作系统，并且平时只是看看网页，刷刷视频的，启用这个入站最合适你。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="实现原理">实现原理<a href="https://ui4freedom.org/UIF_help/blog/inbounds#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86" class="hash-link" aria-label="Direct link to 实现原理" title="Direct link to 实现原理" translate="no">​</a></h3>
+<p>当你在用浏览器访问 Google.com 时，一般来说浏览器会先检查你操作系统中是否设置了 <code>系统代理</code>，如果使用了，那么就会将请求先发送到 <code>系统代理</code> 所提供的地址，例如说：<code>127.0.0.1:9110</code>，这个地址就是由 UIF 提供的，所以 UIF 就能获取你想访问的网站，从而转发翻墙。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="优缺点">优缺点<a href="https://ui4freedom.org/UIF_help/blog/inbounds#%E4%BC%98%E7%BC%BA%E7%82%B9" class="hash-link" aria-label="Direct link to 优缺点" title="Direct link to 优缺点" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>要软件的支持</strong>；浏览器检不检查，转不转发并不是强制的，全看软件愿不愿意支持</li>
+<li class=""><strong>侵入性小，性能较好</strong>；随启随用，无负担</li>
+<li class=""><strong>适用性有限，无法代理 UDP 流量</strong>；所以也就适合看看网页</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="如何使用">如何使用？<a href="https://ui4freedom.org/UIF_help/blog/inbounds#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8" class="hash-link" aria-label="Direct link to 如何使用？" title="Direct link to 如何使用？" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-windows-和-mac-用户">① Windows 和 Mac 用户<a href="https://ui4freedom.org/UIF_help/blog/inbounds#-windows-%E5%92%8C-mac-%E7%94%A8%E6%88%B7" class="hash-link" aria-label="Direct link to ① Windows 和 Mac 用户" title="Direct link to ① Windows 和 Mac 用户" translate="no">​</a></h4>
+<p>仅需在 UIF 入站中点击 <code>启用按钮</code> 即可。UIF 会把操作系统中的系统代理设置为 UIF 所提供的地址。</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-有图形化界面的-linux-用户">② 有图形化界面的 Linux 用户<a href="https://ui4freedom.org/UIF_help/blog/inbounds#-%E6%9C%89%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%95%8C%E9%9D%A2%E7%9A%84-linux-%E7%94%A8%E6%88%B7" class="hash-link" aria-label="Direct link to ② 有图形化界面的 Linux 用户" title="Direct link to ② 有图形化界面的 Linux 用户" translate="no">​</a></h4>
+<p>由于发行版较多，无法做到统一适配，一般来说都是支持一键设置系统代理的，例如说 Ubuntu 操作系统。但如果出现 <code>initialize system proxy: unsupported desktop environment</code> 就意味着不支持自动设置。那就需要 <a href="https://ui4freedom.org/UIF_help/blog/inbounds#%E8%87%AA%E8%A1%8C%E8%AE%BE%E7%BD%AE%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86" class="">自行设置</a>。</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-没有图形化界面的-linux-用户-和-docker-用户">③ 没有图形化界面的 Linux 用户 和 Docker 用户<a href="https://ui4freedom.org/UIF_help/blog/inbounds#-%E6%B2%A1%E6%9C%89%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%95%8C%E9%9D%A2%E7%9A%84-linux-%E7%94%A8%E6%88%B7-%E5%92%8C-docker-%E7%94%A8%E6%88%B7" class="hash-link" aria-label="Direct link to ③ 没有图形化界面的 Linux 用户 和 Docker 用户" title="Direct link to ③ 没有图形化界面的 Linux 用户 和 Docker 用户" translate="no">​</a></h4>
+<p>无法做到一键设置，是绝对会出现 <code>initialize system proxy: unsupported desktop environment</code> 的，从而导致内核无法运行（就是显示 <code>未运行</code> 状态）。</p>
+<p><strong><em>如何解决 <code>initialize system proxy: unsupported desktop environment</code> ?</em></strong></p>
+<p>出现这个错误的意思就是：UIF 无法自行设置系统代理，你需要手动去设置。去到 HTTP 的入站设置，如下图所示：
+<img decoding="async" loading="lazy" alt="设置系统代理选项" src="https://ui4freedom.org/UIF_help/assets/images/2-61fa2ab0cc3d4744fcd0786205d4a1f8.png" width="3004" height="1096" class="img_ev3q"></p>
+<p>取消启用 <code>设置系统代理</code>，然后点击右上角 <code>保存</code> 即可解决问题。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="自行设置操作系统的系统代理">自行设置操作系统的系统代理<a href="https://ui4freedom.org/UIF_help/blog/inbounds#%E8%87%AA%E8%A1%8C%E8%AE%BE%E7%BD%AE%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86" class="hash-link" aria-label="Direct link to 自行设置操作系统的系统代理" title="Direct link to 自行设置操作系统的系统代理" translate="no">​</a></h3>
+<p>不需要 UIF 帮你设置系统代理，或者UIF 无法自动帮你设置系统代理，那么就需要你自己手动去操作。</p>
+<p>一般而言，Windows 和 Mac 都可以在图形化界面一键启用或关闭系统代理：</p>
+<p><img decoding="async" loading="lazy" alt="设置系统代理" src="https://ui4freedom.org/UIF_help/assets/images/3-98bcc171e09a4258c23c3bbe0a25190b.png" width="1420" height="1238" class="img_ev3q"></p>
+<p>所以只需讨论 Linux 是如何操作的，具体情况参考<a href="https://www.joxrays.com/linux-system-proxy/" target="_blank" rel="noopener noreferrer" class="">文章</a>。简单来说，你需要自行执行两条命令即可：</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">export http_proxy=http://127.0.0.1:9110</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">export https_proxy=http://127.0.0.1:9110</span><br></span></code></pre></div></div>
+<p>9110 是 UIF 默认 HTTP 入站的端口，你可以在入站列表里自行去查看或修改监听的端口。</p>
+<p>如果你想在局域网内的用户都可以使用你所提供的代理服务，你仅需将监听地址改为公网，并开放防火墙，这样就可以让其他人也使用你的代理。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="tun-vpn">Tun VPN<a href="https://ui4freedom.org/UIF_help/blog/inbounds#tun-vpn" class="hash-link" aria-label="Direct link to Tun VPN" title="Direct link to Tun VPN" translate="no">​</a></h2>
+<p>如果你做软件开发或者需要游戏加速等复杂情景，Tun 能最大限度的满足所有的需求。</p>
+<p>然而 Tun 的实现方式比较复杂，而且必须需要管理员权限（Root）。具体的请看 <a href="https://ui4freedom.org/UIF_help/docs/inbound/tun" target="_blank" rel="noopener noreferrer" class="">透明代理</a> 。</p>]]></content>
+        <author>
+            <name>UIF Official</name>
+            <uri>https://github.com/UIforFreedom/UIF</uri>
+        </author>
+        <category label="设置入站" term="设置入站"/>
+        <category label="HTTP 代理设置" term="HTTP 代理设置"/>
+        <category label="全局代理， 接管系统流量" term="全局代理， 接管系统流量"/>
+        <category label="Linux 设置系统代理" term="Linux 设置系统代理"/>
+        <category label="Docker 设置系统代理" term="Docker 设置系统代理"/>
+        <category label="翻不了墙" term="翻不了墙"/>
+        <category label="Linux 上设置 Proxy 代理" term="Linux 上设置 Proxy 代理"/>
+        <category label="Mac 设置系统代理" term="Mac 设置系统代理"/>
+        <category label="Tun 和 HTTP 代理的区别" term="Tun 和 HTTP 代理的区别"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[如何使用链式代理？全平台支持！最全最先进]]></title>
+        <id>https://ui4freedom.org/UIF_help/blog/detour</id>
+        <link href="https://ui4freedom.org/UIF_help/blog/detour"/>
+        <updated>2024-09-27T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[本文 4K 高清视频已上传到 Youtube]]></summary>
+        <content type="html"><![CDATA[<p>** 本文 4K 高清视频已上传到 <a href="https://www.youtube.com/watch?v=go-8AiiNVZM" target="_blank" rel="noopener noreferrer" class="">Youtube</a>**</p>
+<div style="width:100%;height:100%"></div>
+<hr>
+<p>什么是链式代理（detour）？假设现在有两个节点 A 和 B，他们分别有不同的 IP 和网络环境，而且最重要的是他们都提供代理功能，假设 A 提供 Vmess 入站，B 提供 HTTP 入站。</p>
+<p>如果要访问 google.com，我们想将内容先发送给 A 节点，然后再由 A 节点，发送给 B 节点，最终由 B 节点发起 google 请求，此时 google 识别到的 IP 也是 B 节点的。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="使用场景">使用场景<a href="https://ui4freedom.org/UIF_help/blog/detour#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF" class="hash-link" aria-label="Direct link to 使用场景" title="Direct link to 使用场景" translate="no">​</a></h2>
+<p>外贸企业通常会用到这种方法来使用住宅 IP，因为 B 节点（也就是落地节点）通常无法在国内直连的，所以需要先连接到 A 节点。</p>
+<p>链式代理也可以用来作为中转服务提高速度或减少延迟，因为即使 B 节点在国内能连接上，连接线路可能会绕圈，经过大半个地球后才能连上 B 节点，用 A 节点作为中转，用户仅需关注你和 A 节点之间的网络情况，A 节点甚至可以部署在国内，从而减少延迟，提高可用性。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="如何实现链式代理有什么限制">如何实现链式代理？有什么限制？<a href="https://ui4freedom.org/UIF_help/blog/detour#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E9%93%BE%E5%BC%8F%E4%BB%A3%E7%90%86%E6%9C%89%E4%BB%80%E4%B9%88%E9%99%90%E5%88%B6" class="hash-link" aria-label="Direct link to 如何实现链式代理？有什么限制？" title="Direct link to 如何实现链式代理？有什么限制？" translate="no">​</a></h2>
+<p>首先就得要本机的翻墙工具具有链式代理的功能，也就是内核必须要支持 A 和 B 的出站方式。</p>
+<p>相比于传统的中转服务，<strong>链式代理并不需要 A 和 B 节点做什么特殊的设置</strong>，因为用户通常也修改不了 A 和 B 节点。用户仅需在客户端添加 A 和 B 出站，然后修改一下 B 的 detour 即可。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="在桌面系统windowslinuxmacos-上如何使用">在桌面系统（Windows、Linux、Macos） 上如何使用？<a href="https://ui4freedom.org/UIF_help/blog/detour#%E5%9C%A8%E6%A1%8C%E9%9D%A2%E7%B3%BB%E7%BB%9Fwindowslinuxmacos-%E4%B8%8A%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8" class="hash-link" aria-label="Direct link to 在桌面系统（Windows、Linux、Macos） 上如何使用？" title="Direct link to 在桌面系统（Windows、Linux、Macos） 上如何使用？" translate="no">​</a></h2>
+<p>首先你要下载好 UIF，参考 <a href="https://ui4freedom.org/UIF_help/docs/category/%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85" target="_blank" rel="noopener noreferrer" class="">UIF 的安装教程</a>。然后添加 A 和 B 节点并启用这两个节点，你可以添加很多个节点，为了简化，这里仅演示两个而已，因为也至少要有两个，而且 A 节点是必须要在国内可用的。</p>
+<p>添加好并启用好入站之后，选中 B 节点 -&gt; 点击 <code>操作</code> 按钮 -&gt; <code>配置</code> -&gt; <code>拨号设置</code> -&gt; 在 <code>链式代理</code> 中选中 A 节点 -&gt; 点击 <code>保存</code>。</p>
+<p>设置好后，B 节点就可用了。最后如果你需要全部流量都走 B 节点，需要设置路由让所有流量走 B 节点，或者选择 <code>简化版</code>选中 B 节点即可。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="在手机上ios安卓-上如何使用">在手机上（IOS、安卓） 上如何使用？<a href="https://ui4freedom.org/UIF_help/blog/detour#%E5%9C%A8%E6%89%8B%E6%9C%BA%E4%B8%8Aios%E5%AE%89%E5%8D%93-%E4%B8%8A%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8" class="hash-link" aria-label="Direct link to 在手机上（IOS、安卓） 上如何使用？" title="Direct link to 在手机上（IOS、安卓） 上如何使用？" translate="no">​</a></h2>
+<p>首先你需要在电脑上设置好，然后去到 <a href="https://ui4freedom.org/#/settings/uif" target="_blank" rel="noopener noreferrer" class="">设置</a> 点击 <code>复制分享链接</code>，把订阅分享到手机上即可。</p>]]></content>
+        <author>
+            <name>UIF Official</name>
+            <uri>https://github.com/UIforFreedom/UIF</uri>
+        </author>
+        <category label="如何使用链式代理" term="如何使用链式代理"/>
+        <category label="如何使用detour" term="如何使用detour"/>
+        <category label="什么是链式代理" term="什么是链式代理"/>
+        <category label="链式代理需要什么" term="链式代理需要什么"/>
+        <category label="怎么链式代理HTTP" term="怎么链式代理HTTP"/>
+        <category label="如何使用节点中转" term="如何使用节点中转"/>
+        <category label="节点中转链式代理" term="节点中转链式代理"/>
+        <category label="安卓上使用链式代理" term="安卓上使用链式代理"/>
+        <category label="外贸链式代理" term="外贸链式代理"/>
+        <category label="IOS 上使用链式代理" term="IOS 上使用链式代理"/>
+        <category label="苹果手机上使用链式代理" term="苹果手机上使用链式代理"/>
+        <category label="sing box 链式代理" term="sing box 链式代理"/>
+        <category label="clash 链式代理" term="clash 链式代理"/>
+        <category label="sing box 中转" term="sing box 中转"/>
+        <category label="clash 中转" term="clash 中转"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[屏蔽广告的方法总结]]></title>
+        <id>https://ui4freedom.org/UIF_help/blog/block_ads</id>
+        <link href="https://ui4freedom.org/UIF_help/blog/block_ads"/>
+        <updated>2024-09-13T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[广告屏蔽]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" alt="广告屏蔽" src="https://ui4freedom.org/UIF_help/assets/images/2-92f75ba702b6f364882c63187bc3d8e3.webp" width="1024" height="1024" class="img_ev3q"></p>
+<p>首先我们要知道技术上是如何屏蔽广告的？当访问一个网页时，广告也会随着网页内容一同显示在浏览器上，要屏蔽某一个网页上的广告，就必须得区分出真实内容和广告内容。所以总的来说，屏蔽广告的方法分为俩大类：</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="非侵入式">非侵入式<a href="https://ui4freedom.org/UIF_help/blog/block_ads#%E9%9D%9E%E4%BE%B5%E5%85%A5%E5%BC%8F" class="hash-link" aria-label="Direct link to 非侵入式" title="Direct link to 非侵入式" translate="no">​</a></h2>
+<p>屏蔽广告程序不会去检查传输的内容，仅知道传输的域名和 IP。</p>
+<p>比如说谷歌有专门的广告域名 <code>ad.google.com</code>，当我们检测到存在该域名的链接，就把他中断掉，从而无法显示出来。然而，如果某个网站的广告域名是 <code>user.x.com</code>，用户的信息也会通过此域名传输，即使我们知道这个会传输广告，但是屏蔽了他，也就同样屏蔽了正常的功能。</p>
+<p>即使可能会误杀，但还是有好心人收集整理了这些广告域名数据库，例如说 <a href="https://github.com/v2fly/domain-list-community" target="_blank" rel="noopener noreferrer" class="">domain-list-community</a></p>
+<p>支持这种屏蔽方式的软件有：</p>
+<ul>
+<li class="">clash</li>
+<li class="">v2ray/xray</li>
+<li class=""><a href="https://sing-box.sagernet.org/zh/" target="_blank" rel="noopener noreferrer" class="">sing-box</a></li>
+</ul>
+<p>以上的软件的原理基本上都是接管所有网络流量，然后分析识别，匹配目标域名是否在广告数据库中，如果在，那么就中断。而且他们所依赖的数据库基本上都是 <a href="https://github.com/v2fly/domain-list-community" target="_blank" rel="noopener noreferrer" class="">domain-list-community</a>，效果可以说是大同小异。</p>
+<p>同时也存在能屏蔽广告的 DNS，例如说 AdGuard DNS，只要把你的设备的 DNS 设置成他们的就可以屏蔽广告。原理还是一样的：通过域名匹配广告数据库。但是这些 DNS 都在国外，延迟非常高，基本不可用，所以就有 <a href="https://github.com/AdguardTeam/AdGuardHome" target="_blank" rel="noopener noreferrer" class="">AdGuardHome</a>，允许你本地搭建一个 DNS Server。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="侵入式">侵入式<a href="https://ui4freedom.org/UIF_help/blog/block_ads#%E4%BE%B5%E5%85%A5%E5%BC%8F" class="hash-link" aria-label="Direct link to 侵入式" title="Direct link to 侵入式" translate="no">​</a></h2>
+<p>这种方式效果最好，我们会获得传输的所有内容，更加细化和精确。但也是同样依赖数据库更新的。</p>
+<p>支持这种方式的基本只有浏览器插件，例如说：</p>
+<ul>
+<li class=""><a href="https://getadblock.com/zh_CN/" target="_blank" rel="noopener noreferrer" class="">ADBlock</a></li>
+<li class="">AdGuard</li>
+</ul>
+<p><img decoding="async" loading="lazy" alt="浏览器插件" src="https://ui4freedom.org/UIF_help/assets/images/1-97cc086d0ac68de04e287b31ca3d12f3.png" width="2257" height="1438" class="img_ev3q"></p>
+<p>图中所展示的就是 AdGuard 的移除广告效果，因为，这类插件都是寄生在浏览器身上，本来就能获取网页内所有的内容，所以能区分广告内容还是有效内容，做到精确移除网页内的广告。</p>
+<p>但如果你是用通过 App 使用 YouTube 之类的，你是无法安装并使用这些插件的。想要屏蔽 App 的广告是不现实的，我们首先需要做中间人 <a href="https://zh.wikipedia.org/wiki/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB" target="_blank" rel="noopener noreferrer" class="">MITM 解密</a> 传输内容，即使能获取传输内容，我们也需要花费大量精力研究如何修改这些传输内容，不同于广告数据库，修改这些内容有可能需要复杂的编程。</p>
+<p>如果一个 APP，直接内嵌证书，而不使用系统内的证书，那么连解密的机会都没有了，只能去破解 APP。市面上也有许多非官方版的破解 APP，但非常不建议去使用这些来源不明的 APP，可能会留有后门。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="最佳方案">最佳方案<a href="https://ui4freedom.org/UIF_help/blog/block_ads#%E6%9C%80%E4%BD%B3%E6%96%B9%E6%A1%88" class="hash-link" aria-label="Direct link to 最佳方案" title="Direct link to 最佳方案" translate="no">​</a></h2>
+<p>维护广告数据库是十分困难的，全球几千万站点，每天上百亿次广告展现，频繁变更的广告植入方式。</p>
+<p>当然了，最佳方案就是给 APP 钱，开会员去广告。但如果你不想给钱，可以尝试一下：使用 AdGuard 规则的 sing-box；原理跟 Clash、V2ray 之类是一样的，但使用了 <a href="https://github.com/ppfeufer/adguard-filter-list" target="_blank" rel="noopener noreferrer" class="">更加完善的广告数据库</a>，更新更加频繁，生态更好。</p>
+<p>如果你是浏览器用户，那么直接使用插件即可。</p>
+<p><img decoding="async" loading="lazy" alt="Sing-Box 去广告" src="https://ui4freedom.org/UIF_help/assets/images/3-d28829759a61b463961a3c183391a529.png" width="1290" height="1039" class="img_ev3q"></p>
+<p>通常在软路由上，人们都喜欢去安装 AdGuardHome，使用 Sing-Box 的具体优势参考上图。<strong>在 UIF 中，你仅需点击启用即可使用 AdGuard 的广告过滤</strong>，全系统支持 WIndows、Linux、Macos 当然也包括软路由。</p>
+<p><img decoding="async" loading="lazy" alt="UIF 去广告" src="https://ui4freedom.org/UIF_help/assets/images/4-98eedd14d8d38b408dae3b685363f0cd.png" width="2105" height="545" class="img_ev3q"></p>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>warning</div><div class="admonitionContent_BuS1"><p>在 UIF 中启用了 <code>AdGuard</code> 功能，试试打开 <a href="https://analytics.google.com/analytics/web" target="_blank" rel="noopener noreferrer" class="">analytics.google.com</a> 这是谷歌的广告管理工具，可以发现打不开被误杀了。这属于正常现象。</p></div></div>]]></content>
+        <author>
+            <name>UIF Official</name>
+            <uri>https://github.com/UIforFreedom/UIF</uri>
+        </author>
+        <category label="软路由屏蔽广告" term="软路由屏蔽广告"/>
+        <category label="软路由屏蔽 AD" term="软路由屏蔽 AD"/>
+        <category label="Clash 屏蔽广告" term="Clash 屏蔽广告"/>
+        <category label="Tun 屏蔽广告" term="Tun 屏蔽广告"/>
+        <category label="DNS 屏蔽广告" term="DNS 屏蔽广告"/>
+        <category label="如何屏蔽广告" term="如何屏蔽广告"/>
+        <category label="屏蔽广告的方法" term="屏蔽广告的方法"/>
+        <category label="AdGuard" term="AdGuard"/>
+        <category label="AdGuard 软路由" term="AdGuard 软路由"/>
+        <category label="AdGuardHome" term="AdGuardHome"/>
+        <category label="AdGuardHome 软路由" term="AdGuardHome 软路由"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[🔥 2024 年 9 月最新可用的免费翻墙节点订阅]]></title>
+        <id>https://ui4freedom.org/UIF_help/blog/free_proxy_nodes</id>
+        <link href="https://ui4freedom.org/UIF_help/blog/free_proxy_nodes"/>
+        <updated>2024-09-04T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[市面上有很多分享免费节点的，在 Github 中可以搜出一大堆，但是可用的寥寥无几，更有甚者，订阅里面提供了 5 千多个节点，但是我们测下来，也就只有不到 200 个节点可用。]]></summary>
+        <content type="html"><![CDATA[<p>市面上有很多分享免费节点的，在 Github 中可以搜出一大堆，但是可用的寥寥无几，更有甚者，订阅里面提供了 5 千多个节点，但是我们测下来，也就只有不到 200 个节点可用。</p>
+<p>所以 <a href="https://github.com/UIforFreedom/Free_Proxy_Nodes" target="_blank" rel="noopener noreferrer" class="">我们</a> 通过爬虫技术，在国内部署了服务器，收集互联网上好心用户分享的免费翻墙节点。并且会通过软件程序，每隔半小时收集并测试这些节点的可用性，没被 <a href="https://zh.wikipedia.org/wiki/%E9%98%B2%E7%81%AB%E9%95%BF%E5%9F%8E" target="_blank" rel="noopener noreferrer" class="">GFW</a> 屏蔽的<code>高可用节点</code>才会出现在这里。</p>
+<p><strong>选择下列其中一个可用的订阅地址，点击复制即可:</strong></p>
+<div class="theme-tabs-container tabs-container tabList__CuJ"><ul role="tablist" aria-orientation="horizontal" class="tabs"><li role="tab" tabindex="0" aria-selected="true" class="tabs__item tabItem_LNqP tabs__item--active">Jsdelivr</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">UI4Freedom</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">Github</li></ul><div class="margin-top--md"><div role="tabpanel" class="tabItem_Ymn6"><p>由 <a href="https://www.jsdelivr.com/" target="_blank" rel="noopener noreferrer" class="">jsdelivr</a> 提供的 CDN</p><div><div style="display:flex;flex-direction:column"><a href="https://cdn.jsdelivr.net/gh/UIforFreedom/Free_Proxy_Nodes@master/subs/7.json" target="_blank" rel="noopener noreferrer">https://cdn.jsdelivr.net/gh/UIforFreedom/Free_Proxy_Nodes@master/subs/7.json</a><div style="margin-top:10px"><button type="button" class="ant-btn css-mncuj7 ant-btn-default ant-btn-color-default ant-btn-variant-outlined"><span>点击复制</span></button><button type="button" class="ant-btn css-mncuj7 ant-btn-primary ant-btn-color-primary ant-btn-variant-solid" style="margin-left:10px"><span>快速导入</span></button></div></div></div></div><div role="tabpanel" class="tabItem_Ymn6" hidden=""><p>由本站提供的域名</p><div><div style="display:flex;flex-direction:column"><a href="http://ui4freedom.org/Free_Proxy_Nodes/subs/6.json" target="_blank" rel="noopener noreferrer">http://ui4freedom.org/Free_Proxy_Nodes/subs/6.json</a><div style="margin-top:10px"><button type="button" class="ant-btn css-mncuj7 ant-btn-default ant-btn-color-default ant-btn-variant-outlined"><span>点击复制</span></button><button type="button" class="ant-btn css-mncuj7 ant-btn-primary ant-btn-color-primary ant-btn-variant-solid" style="margin-left:10px"><span>快速导入</span></button></div></div></div></div><div role="tabpanel" class="tabItem_Ymn6" hidden=""><p>已被屏蔽，需要翻墙后才能使用</p><div><div style="display:flex;flex-direction:column"><a href="https://raw.githubusercontent.com/UIforFreedom/Free_Proxy_Nodes/master/subs/7.json" target="_blank" rel="noopener noreferrer">https://raw.githubusercontent.com/UIforFreedom/Free_Proxy_Nodes/master/subs/7.json</a><div style="margin-top:10px"><button type="button" class="ant-btn css-mncuj7 ant-btn-default ant-btn-color-default ant-btn-variant-outlined"><span>点击复制</span></button><button type="button" class="ant-btn css-mncuj7 ant-btn-primary ant-btn-color-primary ant-btn-variant-solid" style="margin-left:10px"><span>快速导入</span></button></div></div></div></div></div></div>
+<hr>
+<p>如果我们微不足道的东西对你有帮助，请转发分享 <a href="https://github.com/UIforFreedom/UIF" target="_blank" rel="noopener noreferrer" class="">UIF</a> 就是对我们最大的支持。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="如何使用">如何使用？<a href="https://ui4freedom.org/UIF_help/blog/free_proxy_nodes#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8" class="hash-link" aria-label="Direct link to 如何使用？" title="Direct link to 如何使用？" translate="no">​</a></h2>
+<p>免费节点采用的是 Sing-Box 配置的分享格式，全平台支持，包括：Windows、Linux、Macos、Android、IOS；仅需几步就可以使用了。</p>
+<p>你需要先确保已安装了翻墙软件，具体的下载安装参考 <a href="http://ui4freedom.org/UIF_help/docs/quic/mobile" target="_blank" rel="noopener noreferrer" class="">移动端</a> 和 <a href="http://ui4freedom.org/UIF_help/docs/quic/intro" target="_blank" rel="noopener noreferrer" class="">电脑端</a> 的教程。安装完成后，把文本提供订阅链接导入到软件中即可使用。</p>
+<p>导入订阅后，软件会自动选择延迟最低的节点。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="无法使用">无法使用？<a href="https://ui4freedom.org/UIF_help/blog/free_proxy_nodes#%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8" class="hash-link" aria-label="Direct link to 无法使用？" title="Direct link to 无法使用？" translate="no">​</a></h2>
+<p>免费的节点是共享的，任何人都可以使用，所以为了避免滥用和被攻击，设置了自动更新；导入订阅后，请测试一下节点的延迟；若显示则为可用。如不可用，<strong>请更新订阅</strong>，或到本文生成新的订阅链接。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="免责声明">免责声明<a href="https://ui4freedom.org/UIF_help/blog/free_proxy_nodes#%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E" class="hash-link" aria-label="Direct link to 免责声明" title="Direct link to 免责声明" translate="no">​</a></h2>
+<p>本文所有代理服务器均收集自互联网，并不由 UIF 提供，使用这些来源不明的服务器，可能会导致信息泄露等安全问题。</p>]]></content>
+        <author>
+            <name>UIF Official</name>
+            <uri>https://github.com/UIforFreedom/UIF</uri>
+        </author>
+        <category label="订阅转换" term="订阅转换"/>
+        <category label="sing-box 订阅转换" term="sing-box 订阅转换"/>
+        <category label="clash 订阅转换 sing-box" term="clash 订阅转换 sing-box"/>
+        <category label="免费订阅地址" term="免费订阅地址"/>
+        <category label="免费节点" term="免费节点"/>
+        <category label="可用免费订阅地址" term="可用免费订阅地址"/>
+        <category label="可用免费节点" term="可用免费节点"/>
+        <category label="定期更新的订阅" term="定期更新的订阅"/>
+        <category label="共享节点" term="共享节点"/>
+        <category label="可用的翻墙节点" term="可用的翻墙节点"/>
+        <category label="翻墙节点质量高" term="翻墙节点质量高"/>
+        <category label="免费 clash 订阅地址" term="免费 clash 订阅地址"/>
+        <category label="clash 订阅地址" term="clash 订阅地址"/>
+        <category label="sing-box 订阅地址" term="sing-box 订阅地址"/>
+        <category label="sing-box 机场订阅" term="sing-box 机场订阅"/>
+        <category label="免费 sing-box 订阅地址" term="免费 sing-box 订阅地址"/>
+        <category label="免费 sing-box 订阅" term="免费 sing-box 订阅"/>
+        <category label="免费 clash 订阅地址" term="免费 clash 订阅地址"/>
+        <category label="免费翻墙" term="免费翻墙"/>
+        <category label="免费VPN" term="免费VPN"/>
+        <category label="VPN翻墙" term="VPN翻墙"/>
+        <category label="科学上网" term="科学上网"/>
+        <category label="免费科学上网" term="免费科学上网"/>
+        <category label="免费梯子" term="免费梯子"/>
+        <category label="梯子翻墙" term="梯子翻墙"/>
+        <category label="免费梯子翻墙" term="免费梯子翻墙"/>
+        <category label="Free Proxy Node" term="Free Proxy Node"/>
+        <category label="Free VPN Server" term="Free VPN Server"/>
+        <category label="免费shadowsocks、v2ray、vmess、xray、vless、trojan节点" term="免费shadowsocks、v2ray、vmess、xray、vless、trojan节点"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[网络泄露指北]]></title>
+        <id>https://ui4freedom.org/UIF_help/blog/network</id>
+        <link href="https://ui4freedom.org/UIF_help/blog/network"/>
+        <updated>2024-07-12T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[---]]></summary>
+        <content type="html"><![CDATA[<hr>
+<h1>背景</h1>
+<p>很多人害怕通过某些手段找到自己的肉身，或者自己的网络行为被发现，说到底，其实是对现行网络安全的不信任，担心自己受到监控；在初期网络时代，对于电信运营商来说，用户的浏览内容完全可见，毫无隐私可言。随着 HTTPS 的普及（但是还是不能架住流氓，参考 <a href="https://pao-pao.net/article/403" target="_blank" rel="noopener noreferrer" class="">cnnic 事件</a>），浏览内容不能被看到了，<strong>但是浏览记录还可能会被监控着</strong>。</p>
+<p>本文介绍在技术上如何防止自己的身份泄露，对于<code>社工攻击</code>（主动发言暴露身份的）暂且不涉及。而且本文的解决方案最先进和安全的。</p>
+<p><img decoding="async" loading="lazy" alt="dns leak" src="https://ui4freedom.org/UIF_help/assets/images/1-c1b5f5cf0daba2ebceb5b58cbafddd47.webp" title="DNS 泄露" width="1024" height="1024" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="本机-ip-泄露">本机 IP 泄露<a href="https://ui4freedom.org/UIF_help/blog/network#%E6%9C%AC%E6%9C%BA-ip-%E6%B3%84%E9%9C%B2" class="hash-link" aria-label="Direct link to 本机 IP 泄露" title="Direct link to 本机 IP 泄露" translate="no">​</a></h2>
+<p>当我们用 VPN 翻墙时，有两个 IP，一个是本机国内的真实 IP，一个是 VPN 代理服务器的 IP。正常来说，使用 VPN 时，无论访问什么网站，网站方收到的 IP，始终是代理服务器的 IP。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="通过域名分流检测-ip-泄露">通过域名分流检测 IP 泄露<a href="https://ui4freedom.org/UIF_help/blog/network#%E9%80%9A%E8%BF%87%E5%9F%9F%E5%90%8D%E5%88%86%E6%B5%81%E6%A3%80%E6%B5%8B-ip-%E6%B3%84%E9%9C%B2" class="hash-link" aria-label="Direct link to 通过域名分流检测 IP 泄露" title="Direct link to 通过域名分流检测 IP 泄露" translate="no">​</a></h3>
+<p>但是因为我们想要用路由分流，来提高访问速度，也就是“国内网站用本机真实的 IP，国外网站用 VPN 的代理 IP”。实际上，我们根本无法精确的区分哪个网站是属于中国大陆的，哪个网站不属于中国大陆，然而还是有好心人，整理维护一些数据库，用于区分不同类型的网站。参考 <a href="https://github.com/Loyalsoldier/v2ray-rules-dat" target="_blank" rel="noopener noreferrer" class="">Geosite</a>。</p>
+<p>一些网站可以利用 Geosite 的精确度很低的缺点来获取用户的真实 IP，比如说：用户需要访问 <code>A.com</code> ，<code>A.com</code> 在 Geosite 中属于非中国网站，用户在访问 <code>A.com</code> 时，故意在他的网页内隐蔽地对 <code>B.com</code> 发起一次请求，然而 <code>B.com</code> 在 Goesite 里面属于中国大陆网站，从而 <code>B.com</code> 使用了真实的 IP，导致了真实 IP 泄露。</p>
+<p><img decoding="async" loading="lazy" alt="IP leak" src="https://ui4freedom.org/UIF_help/assets/images/2-0493f0377bb226dd9aa803d6688c2424.webp" title="IP 泄露" width="1792" height="1024" class="img_ev3q"></p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="通过-udp-检测-ip-泄露">通过 UDP 检测 IP 泄露<a href="https://ui4freedom.org/UIF_help/blog/network#%E9%80%9A%E8%BF%87-udp-%E6%A3%80%E6%B5%8B-ip-%E6%B3%84%E9%9C%B2" class="hash-link" aria-label="Direct link to 通过 UDP 检测 IP 泄露" title="Direct link to 通过 UDP 检测 IP 泄露" translate="no">​</a></h3>
+<p>还有一种就是通过请求非 HTTP 协议（例如说 WebRTC），探测用户的真实 IP。因为我们常用的 HTTP 代理协议，只能用于代理 TCP，无法代理 UDP，也就是 UDP 永远只能使用真实的用户 IP，从而导致真实 IP 泄露。</p>
+<p><strong>解决 IP 泄露，唯一有效的解决方法就是：使用具有代理 UDP 功能的透明代理，并且不要使用路由分流功能。</strong></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="dns-泄露">DNS 泄露<a href="https://ui4freedom.org/UIF_help/blog/network#dns-%E6%B3%84%E9%9C%B2" class="hash-link" aria-label="Direct link to DNS 泄露" title="Direct link to DNS 泄露" translate="no">​</a></h2>
+<p>什么是 DNS 泄露？当我们访问 google.com 时，必须要先进行 <code>域名解析</code>，从而获取目的服务器的 IP，然后才能打开谷歌，当我们发起 DNS 请求时，也必须要把我们想要的域名发送给 DNS 服务器；DNS 服务器必须要看到域名明文才能把目标服务器的 IP 发还给我们。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="由-dns-运营商泄露">由 DNS 运营商泄露<a href="https://ui4freedom.org/UIF_help/blog/network#%E7%94%B1-dns-%E8%BF%90%E8%90%A5%E5%95%86%E6%B3%84%E9%9C%B2" class="hash-link" aria-label="Direct link to 由 DNS 运营商泄露" title="Direct link to 由 DNS 运营商泄露" translate="no">​</a></h3>
+<p>有一些服从政府安排的 DNS 运营商，例如说阿里云（223.5.5.5）、腾讯云（1.12.12.12）等，你把域名发给他们解析，他们会记录下来，然后就可以随时上报你所访问的域名。</p>
+<p><strong>解决 DNS 运营商泄露只能用自己信任的 DNS 提供商</strong>，也有部分的会选择自建 DNS 服务器，但成本太高，而且有点技术难度。</p>
+<p>所以有的人会信任国外的 DNS 提供商，例如说谷歌（8.8.8.8）、Cloudflare（1.1.1.1） 等提供的 DNS 服务器，但是通常他们都是在国外，所以访问速度堪忧。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="中间人挟持的-dns-泄露">中间人挟持的 DNS 泄露<a href="https://ui4freedom.org/UIF_help/blog/network#%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%8C%9F%E6%8C%81%E7%9A%84-dns-%E6%B3%84%E9%9C%B2" class="hash-link" aria-label="Direct link to 中间人挟持的 DNS 泄露" title="Direct link to 中间人挟持的 DNS 泄露" translate="no">​</a></h3>
+<p>假如说你想使用处于国外的谷歌 DNS 服务器： <a href="https://www.google.com/" target="_blank" rel="noopener noreferrer" class="">udp://8.8.8.8 </a> ，这种 udp 方式的 DNS 是最常见最悠久的方式。</p>
+<p>但是这种 DNS 请求是没加密的，也就是说，中间人可以拦截并解析出你想访问的域名，更有甚者，直接挟持返回错误的 IP，在远古的网络时代，运营商经常通过此方法往我们的电脑“弹”广告，许多人苦不堪言。</p>
+<p>同时，用 DNS 来阻止用户访问境外网站是 GFW 封锁的最主要手段。</p>
+<p>不过幸运的是，业界很早就认识到，没有加密的 DNS 是很邪恶且危险的事情。带有加密的 DNS 服务器，例如说 <a href="https://www.google.com/" target="_blank" rel="noopener noreferrer" class="">https://8.8.8.8 </a>，已经很常见了。</p>
+<p><strong>解决中间人挟持泄露必须使用带加密的 DNS 服务器</strong>，也就是前缀为 <code>https</code> 和 <code>tls</code> 的那种。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="解决-dns-泄露的最佳方案">解决 DNS 泄露的最佳方案<a href="https://ui4freedom.org/UIF_help/blog/network#%E8%A7%A3%E5%86%B3-dns-%E6%B3%84%E9%9C%B2%E7%9A%84%E6%9C%80%E4%BD%B3%E6%96%B9%E6%A1%88" class="hash-link" aria-label="Direct link to 解决 DNS 泄露的最佳方案" title="Direct link to 解决 DNS 泄露的最佳方案" translate="no">​</a></h3>
+<p>有些事情非常有趣：国外带加密的 DNS 服务器（例如说 <a href="https://8.8.8.8)/" target="_blank" rel="noopener noreferrer" class="">https://8.8.8.8）</a> 都是被 GFW 屏蔽的，也就是无论你怎么弄，都是无法使用的；反而不带加密的国外 DNS 服务器却是可以正常使用的，例如说： udp://8.8.8.8。</p>
+<p>所以，我们必须要清楚地认识到，使用国外 DNS 提供商并不能解决问题，无论何时都必须要带加密的。</p>
+<p>那问题来了：既然不能使用带有加密的国外 DNS 服务器，那不是说废话吗？别担心，UIF 已经你设置好了远程（国外）DNS 是默认走代理的，只要你有可用的翻墙节点，那么就可用，如果你没有翻墙节点，可以试试 <a href="http://ui4freedom.org/UIF_help/blog/free_proxy_nodes" target="_blank" rel="noopener noreferrer" class="">免费的翻墙节点</a>。</p>
+<p>UIF 还提供了用 IP 来提高分流的精确度，在 <a href="http://ui4freedom.org/#/route/my" target="_blank" rel="noopener noreferrer" class="">自定义路由</a> 中可以看到 <code>IP 分流</code> 选项：</p>
+<table><thead><tr><th>类型</th><th>区别</th><th>好处</th><th>坏处</th></tr></thead><tbody><tr><td>不使用</td><td>就是不使用</td><td>简单</td><td>过于简单，分流效果差</td></tr><tr><td>本地 DNS</td><td>每次访问时，都会用本地的 DNS 做域名解析</td><td>效果最好，速度最快</td><td>DNS会泄露</td></tr><tr><td>带 ECS 的远程 DNS</td><td>每次访问时，都会用远程的 DNS 做域名解析</td><td>最安全</td><td>延迟高</td></tr></tbody></table>
+<p><code>带 ECS 的远程 DNS</code> 还需要可用翻墙节点；CDN 地区选择可能会稍差，取决于 DNS 提供商，仅谷歌等极少量提供商支持。具体使用哪一种，根据自己的需求选择即可。UIF 默认<code>不使用</code>。</p>]]></content>
+        <author>
+            <name>UIF Official</name>
+            <uri>https://github.com/UIforFreedom/UIF</uri>
+        </author>
+        <category label="DNS 泄露" term="DNS 泄露"/>
+        <category label="IP 泄露" term="IP 泄露"/>
+        <category label="IP 是怎么泄露的" term="IP 是怎么泄露的"/>
+        <category label="什么是 IP 泄露" term="什么是 IP 泄露"/>
+        <category label="什么是 DNS 泄露" term="什么是 DNS 泄露"/>
+        <category label="DNS 是怎么泄露的" term="DNS 是怎么泄露的"/>
+        <category label="DNS 泄露有什么危害" term="DNS 泄露有什么危害"/>
+        <category label="怎么防止 DNS 泄露" term="怎么防止 DNS 泄露"/>
+        <category label="怎么防止 IP 泄露" term="怎么防止 IP 泄露"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[内网穿透]]></title>
+        <id>https://ui4freedom.org/UIF_help/blog/locol</id>
+        <link href="https://ui4freedom.org/UIF_help/blog/locol"/>
+        <updated>2024-04-20T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[---]]></summary>
+        <content type="html"><![CDATA[<hr>
+<p>有属于自己的一台 VPS 有什么好处？假如你肉身在中国大陆，你在美国的家里有一台常年开机的服务器，通常为了可以像在美国家里一样访问网络的任何资源（也就是俗称翻墙），你可以通过 VPN 技术，把所有的网络流量转发到美国。</p>
+<p>同样的，你也可以在美国时，想要使用网易云、QQ音乐等有版权隔离的应用，也需要IP”回国“才能正常使用。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="为什么需要内网穿透">为什么需要内网穿透？<a href="https://ui4freedom.org/UIF_help/blog/locol#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F" class="hash-link" aria-label="Direct link to 为什么需要内网穿透？" title="Direct link to 为什么需要内网穿透？" translate="no">​</a></h2>
+<p>如果你的需要时“翻墙”、“回国”，通常只需购买具有公网 IP 的 VPS 即可，并不需要内网穿透。但有些人就喜欢折腾。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="最佳实践">最佳实践<a href="https://ui4freedom.org/UIF_help/blog/locol#%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5" class="hash-link" aria-label="Direct link to 最佳实践" title="Direct link to 最佳实践" translate="no">​</a></h2>
+<p>必要的：</p>
+<ul>
+<li class="">一台具有公网的VPS</li>
+<li class="">两台电脑客户端（Client）和服务端（Server）</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="使用-frp">使用 <a href="https://github.com/fatedier/frp" target="_blank" rel="noopener noreferrer" class="">frp</a><a href="https://ui4freedom.org/UIF_help/blog/locol#%E4%BD%BF%E7%94%A8-frp" class="hash-link" aria-label="Direct link to 使用-frp" title="Direct link to 使用-frp" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="将-frp-安装在公网-vps">将 frp 安装在公网 VPS<a href="https://ui4freedom.org/UIF_help/blog/locol#%E5%B0%86-frp-%E5%AE%89%E8%A3%85%E5%9C%A8%E5%85%AC%E7%BD%91-vps" class="hash-link" aria-label="Direct link to 将 frp 安装在公网 VPS" title="Direct link to 将 frp 安装在公网 VPS" translate="no">​</a></h4>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="将-frp-安装在服务端">将 frp 安装在服务端<a href="https://ui4freedom.org/UIF_help/blog/locol#%E5%B0%86-frp-%E5%AE%89%E8%A3%85%E5%9C%A8%E6%9C%8D%E5%8A%A1%E7%AB%AF" class="hash-link" aria-label="Direct link to 将 frp 安装在服务端" title="Direct link to 将 frp 安装在服务端" translate="no">​</a></h4>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="在服务端安装-uif">在服务端安装 UIF<a href="https://ui4freedom.org/UIF_help/blog/locol#%E5%9C%A8%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%89%E8%A3%85-uif" class="hash-link" aria-label="Direct link to 在服务端安装 UIF" title="Direct link to 在服务端安装 UIF" translate="no">​</a></h4>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="开启-uif-入站">开启 UIF 入站<a href="https://ui4freedom.org/UIF_help/blog/locol#%E5%BC%80%E5%90%AF-uif-%E5%85%A5%E7%AB%99" class="hash-link" aria-label="Direct link to 开启 UIF 入站" title="Direct link to 开启 UIF 入站" translate="no">​</a></h4>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="在客户端安装-uif">在客户端安装 UIF<a href="https://ui4freedom.org/UIF_help/blog/locol#%E5%9C%A8%E5%AE%A2%E6%88%B7%EF%BF%BD%E7%AB%AF%E5%AE%89%E8%A3%85-uif" class="hash-link" aria-label="Direct link to 在客户端安装 UIF" title="Direct link to 在客户端安装 UIF" translate="no">​</a></h4>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="添加-uif-出站">添加 UIF 出站<a href="https://ui4freedom.org/UIF_help/blog/locol#%E6%B7%BB%E5%8A%A0-uif-%E5%87%BA%E7%AB%99" class="hash-link" aria-label="Direct link to 添加 UIF 出站" title="Direct link to 添加 UIF 出站" translate="no">​</a></h4>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="客户端启用-tun-模式或者-http">客户端启用 Tun 模式或者 HTTP<a href="https://ui4freedom.org/UIF_help/blog/locol#%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%90%AF%E7%94%A8-tun-%E6%A8%A1%E5%BC%8F%E6%88%96%E8%80%85-http" class="hash-link" aria-label="Direct link to 客户端启用 Tun 模式或者 HTTP" title="Direct link to 客户端启用 Tun 模式或者 HTTP" translate="no">​</a></h4>
+<p>启用 Tun，那跟 VPN 无差异，使用 HTTP 就可以满足绝大部分人群。</p>]]></content>
+        <author>
+            <name>UIF Official</name>
+            <uri>https://github.com/UIforFreedom/UIF</uri>
+        </author>
+        <category label="内网穿透" term="内网穿透"/>
+        <category label="VPS" term="VPS"/>
+        <category label="VPN转发" term="VPN转发"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[跨境电商是否需要指纹浏览器]]></title>
+        <id>https://ui4freedom.org/UIF_help/blog/browser</id>
+        <link href="https://ui4freedom.org/UIF_help/blog/browser"/>
+        <updated>2024-04-13T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[---]]></summary>
+        <content type="html"><![CDATA[<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="背景介绍">背景介绍<a href="https://ui4freedom.org/UIF_help/blog/browser#%E8%83%8C%E6%99%AF%E4%BB%8B%E7%BB%8D" class="hash-link" aria-label="Direct link to 背景介绍" title="Direct link to 背景介绍" translate="no">​</a></h2>
+<p>由于中国网络环境的特殊性，以及较为封闭的经济制度，导致外贸行业需要某些特殊技术或技巧，才能正常工作。特别是国外电商平台，都有非常全面的防止滥用机制。</p>
+<p>例如说：Meta 系列下的产品（Facebook 和 Instagram），只要你用邮箱注册的账号，无论你的 IP 有多纯净，无论你的翻墙技术有多万无一失，无论你所使用的浏览器是否“唯一”，都有非常高的概率会封你号，要求你用手机号验证，并且上传自拍照认证。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="本文结论">本文结论<a href="https://ui4freedom.org/UIF_help/blog/browser#%E6%9C%AC%E6%96%87%E7%BB%93%E8%AE%BA" class="hash-link" aria-label="Direct link to 本文结论" title="Direct link to 本文结论" translate="no">​</a></h2>
+<p>先放本文结论，方便许多不想仔细看的人。</p>
+<ul>
+<li class="">
+<p>跨境电商是否需要指纹浏览器
+—— 完全不需要</p>
+</li>
+<li class="">
+<p>跨境电商是否需要海外 IP
+—— 必须要</p>
+</li>
+<li class="">
+<p>跨境电商是否需要纯净 IP（原生 IP）
+—— 最好要</p>
+</li>
+<li class="">
+<p>要怎么保证运营跨境电商账号安全？
+—— 保持 IP 稳定，不滥用，不违法，公司最好注册在国外</p>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="跨境电商第一步">跨境电商第一步<a href="https://ui4freedom.org/UIF_help/blog/browser#%E8%B7%A8%E5%A2%83%E7%94%B5%E5%95%86%E7%AC%AC%E4%B8%80%E6%AD%A5" class="hash-link" aria-label="Direct link to 跨境电商第一步" title="Direct link to 跨境电商第一步" translate="no">​</a></h2>
+<p>肯定是要解决翻墙问题。连网页都打不开，谈何施展拳脚？第一个，肯定不要去使用机场、VPN 服务商。</p>
+<p>最好自建一个专享的、独享的；或者你也可以给钱给别人帮你建好。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="稳定的-ip-是必须的">稳定的 IP 是必须的<a href="https://ui4freedom.org/UIF_help/blog/browser#%E7%A8%B3%E5%AE%9A%E7%9A%84-ip-%E6%98%AF%E5%BF%85%E9%A1%BB%E7%9A%84" class="hash-link" aria-label="Direct link to 稳定的 IP 是必须的" title="Direct link to 稳定的 IP 是必须的" translate="no">​</a></h3>
+<p>必须是得自己独享。事实上，自建一个独享是非常简单且便宜的事情，你只需选择一个正确的 VPS 商家，每个月的价格 100 人民币已经是顶天的存在。</p>
+<p>如果被封了，你也可以使用“中转”的方式依然使用自己的独享 IP。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="最好要纯净的-ip">最好要纯净的 IP<a href="https://ui4freedom.org/UIF_help/blog/browser#%E6%9C%80%E5%A5%BD%E8%A6%81%E7%BA%AF%E5%87%80%E7%9A%84-ip" class="hash-link" aria-label="Direct link to 最好要纯净的 IP" title="Direct link to 最好要纯净��的 IP" translate="no">​</a></h3>
+<p>目前很多平台都会去检测是否是机房 IP（Hosting），也就是 VPS 商家，还有另外一种是 ISP（住宅 IP）。还是那句，只要你选对了 VPS 商家，每个月 100 人民币，就可以获得住宅 IP。</p>
+<p>但是，并不是说住宅 IP 就是纯净的，还是有很多滥用的住宅 IP，比如说“住宅 IP 代理提供商”，他们提供的 IP 其实是万人骑的，表面上是显示 ISP，实际上很多所谓“网赚”项目，早就用烂抛弃这些 IP，然后转销给你个人。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="最好使用全局模式和-socks5">最好使用全局模式和 Socks5<a href="https://ui4freedom.org/UIF_help/blog/browser#%E6%9C%80%E5%A5%BD%E4%BD%BF%E7%94%A8%E5%85%A8%E5%B1%80%E6%A8%A1%E5%BC%8F%E5%92%8C-socks5" class="hash-link" aria-label="Direct link to 最好使用全局模式和 Socks5" title="Direct link to 最好使用全局模式和 Socks5" translate="no">​</a></h3>
+<p>分流模式可能会导致 DNS 泄露，还有很多代理软件或协议对 UDP 支持不够好，唯一有明确规范的代理协议只有 Socks5。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="第二步">第二步<a href="https://ui4freedom.org/UIF_help/blog/browser#%E7%AC%AC%E4%BA%8C%E6%AD%A5" class="hash-link" aria-label="Direct link to 第二步" title="Direct link to 第二步" translate="no">​</a></h2>
+<p>解决收款问题，这个不是翻墙技术问题，我就不发表看法。但是我强烈建议是：注册并使用海外公司来运营。</p>
+<p>能省税且金融自由。直接去淘宝、拼多多等平台搜”注册香港公司“，选择销量最高的即可。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="第三步">第三步<a href="https://ui4freedom.org/UIF_help/blog/browser#%E7%AC%AC%E4%B8%89%E6%AD%A5" class="hash-link" aria-label="Direct link to 第三步" title="Direct link to 第三步" translate="no">​</a></h2>
+<p>使用苹果手机、Windows 系统和 Chrome 浏览器来运营。苹果手机是跨境电商必备的，这我就不用多说了，在 IOS 上很多使用“小火箭”来翻墙。</p>
+<p>这里肯定是要推荐一下 UIF，可以使用完全免费的 Sing-box。你只需去到 <a href="https://uiforfreedom.github.io/#/settings/uif" target="_blank" rel="noopener noreferrer" class="">UIF 的设置</a>，点击一下“复制分享链接”，然后把他粘贴到 Sing-box 订阅中，就可以使用了。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="第四步">第四步<a href="https://ui4freedom.org/UIF_help/blog/browser#%E7%AC%AC%E5%9B%9B%E6%AD%A5" class="hash-link" aria-label="Direct link to 第四步" title="Direct link to 第四步" translate="no">​</a></h2>
+<p>谷歌账号隔离，也就是所谓的“指纹”。由浏览器的编译版本、设置的语言、什么什么技术特征，说这个指纹纯粹是“炒作概念”。</p>
+<p>唯一能追踪你身份的只有 Cookie 和你的 IP；谷歌公司曾几何时还想着开发一个能够用于广告追踪的、有别于 Cookie 的身份识别码，遭到空前反对。</p>
+<p>我说的这个例子是想表达，在软件开发时，工程师们是很在意身份能否被追踪的。在维护 Chrome 时，根本没有人在乎所谓什么浏览器的“指纹”，反倒是有“访客模式”和“多个登录用户”，这些都是可以隔离 Cookie 和设置的模式。</p>
+<p>所以，你完全不需要理会什么“指纹”影响你的运营。你需要多个账号时，可以直接使用 Chrome 提供的“多用户”即可。当然，那种要维护成千上万个账号的除外，他们不可能使用手动的方式的维护账号。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="总结">总结<a href="https://ui4freedom.org/UIF_help/blog/browser#%E6%80%BB%E7%BB%93" class="hash-link" aria-label="Direct link to 总结" title="Direct link to 总结" translate="no">​</a></h2>
+<p>我说的这些都是大实话，然而，我在谷歌中搜索“跨境电商是否需要指纹浏览器”，答案都是必须要的。当然不是我反其道而行，而是把“正确答案”推至搜索首页的人就是“指纹浏览器提供商”。</p>]]></content>
+        <author>
+            <name>UIF Official</name>
+            <uri>https://github.com/UIforFreedom/UIF</uri>
+        </author>
+        <category label="跨境" term="跨境"/>
+        <category label="跨境翻墙" term="跨境翻墙"/>
+        <category label="出海技术" term="出海技术"/>
+        <category label="出海翻墙" term="出海翻墙"/>
+        <category label="外贸" term="外贸"/>
+        <category label="亚马逊封号" term="亚马逊封号"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[翻墙安全建议]]></title>
+        <id>https://ui4freedom.org/UIF_help/blog/safe</id>
+        <link href="https://ui4freedom.org/UIF_help/blog/safe"/>
+        <updated>2024-02-27T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[---]]></summary>
+        <content type="html"><![CDATA[<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="背景介绍">背景介绍<a href="https://ui4freedom.org/UIF_help/blog/safe#%E8%83%8C%E6%99%AF%E4%BB%8B%E7%BB%8D" class="hash-link" aria-label="Direct link to 背景介绍" title="Direct link to 背景介绍" translate="no">​</a></h2>
+<p>李老师在 2024-02-25 发布了一则<a href="https://twitter.com/whyyoutouzhele/status/1761709242992427122" target="_blank" rel="noopener noreferrer" class="">紧急通知</a></p>
+<blockquote>
+<p>“目前公安部正在我的160万追随者列表和评论区逐个排查关注我的人，一经确认身份就会通知地方警察打电话叫人喝茶”</p>
+</blockquote>
+<p>照成了一定程度的恐慌。</p>
+<p>本文列出一些翻墙软件的安全建议，以供读者参考。</p>
+<p>总的来说，原理很简单：<strong>就是不能将国内”肉身“与墙外身份关联在一起</strong></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="切勿使用国内手机号注册">切勿使用国内手机号注册<a href="https://ui4freedom.org/UIF_help/blog/safe#%E5%88%87%E5%8B%BF%E4%BD%BF%E7%94%A8%E5%9B%BD%E5%86%85%E6%89%8B%E6%9C%BA%E5%8F%B7%E6%B3%A8%E5%86%8C" class="hash-link" aria-label="Direct link to 切勿使用国内手机号注册" title="Direct link to 切勿使用国内手机号注册" translate="no">​</a></h2>
+<p>无论是注册哪个社交媒体，用国内手机号注册是绝对不安全的，而且也不应该使用手机号注册，能用邮箱则用邮箱。</p>
+<p>邮箱优先选择 <a href="https://mail.protonmail.com/" target="_blank" rel="noopener noreferrer" class="">ProtonMail</a>，Gmail 注册较为麻烦且可能需要验证手机号。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="切勿共用密码和用户名">切勿共用密码和用户名<a href="https://ui4freedom.org/UIF_help/blog/safe#%E5%88%87%E5%8B%BF%E5%85%B1%E7%94%A8%E5%AF%86%E7%A0%81%E5%92%8C%E7%94%A8%E6%88%B7%E5%90%8D" class="hash-link" aria-label="Direct link to 切勿共用密码和用户名" title="Direct link to 切勿共用密码和用户名" translate="no">​</a></h2>
+<p>有些人可能会贪图方便，所有的网站注册都用同一套用户名和密码。正确的做法：每次注册都用尽可能随机的用户名和密码。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="能使用-https-则使用-https">能使用 HTTPS 则使用 HTTPS<a href="https://ui4freedom.org/UIF_help/blog/safe#%E8%83%BD%E4%BD%BF%E7%94%A8-https-%E5%88%99%E4%BD%BF%E7%94%A8-https" class="hash-link" aria-label="Direct link to 能使用 HTTPS 则使用 HTTPS" title="Direct link to 能使用 HTTPS 则使用 HTTPS" translate="no">​</a></h2>
+<p>无论使用哪个 VPN 服务器提供商或“机场”，<strong>他们都能准确无误地获得你将要访问的域名、IP 或端口</strong>。若你使用 HTTPS，那么他们将无法获得你和目标服务器之间的通讯内容，但目标服务器是可以被识别出来的。若不使用 HTTP，那么通讯内容将会完全地暴露。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="使用国外加密-dns">使用国外加密 DNS<a href="https://ui4freedom.org/UIF_help/blog/safe#%E4%BD%BF%E7%94%A8%E5%9B%BD%E5%A4%96%E5%8A%A0%E5%AF%86-dns" class="hash-link" aria-label="Direct link to 使用国外加密 DNS" title="Direct link to 使用国外加密 DNS" translate="no">​</a></h2>
+<p>切勿使用传统无加密的 <code>udp://</code> DNS，优先使用 <code>https://</code>、<code>tls://</code>的加密 DNS。而且是非中国大陆政府控制的 DNS 提供商，例如：</p>
+<ul>
+<li class=""><code>https://dns.google/dns-query</code></li>
+<li class=""><code>https://1.1.1.1/dns-query</code></li>
+</ul>
+<p>你可以在 <a href="https://uiforfreedom.github.io/#/route/my" target="_blank" rel="noopener noreferrer" class="">UIF 路由</a> 修改你当前所使用的 DNS 地址</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="不用分流">不用分流<a href="https://ui4freedom.org/UIF_help/blog/safe#%E4%B8%8D%E7%94%A8%E5%88%86%E6%B5%81" class="hash-link" aria-label="Direct link to 不用分流" title="Direct link to 不用分流" translate="no">​</a></h2>
+<p>不使用 <code>国内直连，国内代理</code> 分流功能，Clash 中称为“规则”，若将访问服务器中插入了后缀为.cn 的网址，<code>UIF</code> 会将其识别国内地址，所以会导致被识别出使用了不同的 IP。</p>
+<p>建议使用 <code>全部代理</code>。</p>
+<p>你可以在 <a href="https://uiforfreedom.github.io/#/route/my" target="_blank" rel="noopener noreferrer" class="">UIF 路由</a> 修改你当前所使用的路由规则。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="自建翻墙服务器时只选大厂">自建“翻墙”服务器时，只选“大厂”<a href="https://ui4freedom.org/UIF_help/blog/safe#%E8%87%AA%E5%BB%BA%E7%BF%BB%E5%A2%99%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%B6%E5%8F%AA%E9%80%89%E5%A4%A7%E5%8E%82" class="hash-link" aria-label="Direct link to 自建“翻墙”服务器时，只选“大厂”" title="Direct link to 自建“翻墙”服务器时，只选“大厂”" translate="no">​</a></h2>
+<p>自建”翻墙“服务器，需要购买 VPS，市面上 VPS 的竞争很激烈，有许许多多的可以选择的厂牌。建议只使用”大厂“：</p>
+<ul>
+<li class="">谷歌云</li>
+<li class="">亚马逊云</li>
+<li class="">甲骨文云</li>
+</ul>
+<p>切勿使用“不知名”、容易受到威胁的“小厂”，他们往往会很愿意配合调查。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="自建翻墙服务器时务必使用-tls">自建“翻墙”服务器时，务必使用 TLS<a href="https://ui4freedom.org/UIF_help/blog/safe#%E8%87%AA%E5%BB%BA%E7%BF%BB%E5%A2%99%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%B6%E5%8A%A1%E5%BF%85%E4%BD%BF%E7%94%A8-tls" class="hash-link" aria-label="Direct link to 自建“翻墙”服务器时，务必使用 TLS" title="Direct link to 自建“翻墙”服务器时，务必使用 TLS" translate="no">​</a></h2>
+<p>无论是哪种代理协议，只要你套上了 TLS，就可以免遭监控、破解。而且很重要的一点，不应该使用 <code>Skip-Verify（insecure）</code>、<code>信任系统默认根证书</code>；最保险方法：<code>自签证书</code></p>
+<p><a href="https://uiforfreedom.github.io/#/in/my" target="_blank" rel="noopener noreferrer" class="">UIF 的 TLS 配置</a> 默认使用<code>自签证书</code>方式，每个用户都会有自己的 <code>证书</code> 和 <code>秘钥</code>。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="留言评论时注意社工攻击">留言、评论时注意“社工”攻击<a href="https://ui4freedom.org/UIF_help/blog/safe#%E7%95%99%E8%A8%80%E8%AF%84%E8%AE%BA%E6%97%B6%E6%B3%A8%E6%84%8F%E7%A4%BE%E5%B7%A5%E6%94%BB%E5%87%BB" class="hash-link" aria-label="Direct link to 留言、评论时注意“社工”攻击" title="Direct link to 留言、评论时注意“社工”攻击" translate="no">​</a></h2>
+<p>发布照片、帖子、评论等，往往会在不经意间泄露你的个人信息。尽可能做到“沉默是金”。</p>]]></content>
+        <author>
+            <name>UIF Official</name>
+            <uri>https://github.com/UIforFreedom/UIF</uri>
+        </author>
+        <category label="安全" term="安全"/>
+        <category label="翻墙" term="翻墙"/>
+        <category label="监控" term="监控"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[基于 QUIC 的代理协议]]></title>
+        <id>https://ui4freedom.org/UIF_help/blog/quic</id>
+        <link href="https://ui4freedom.org/UIF_help/blog/quic"/>
+        <updated>2023-09-14T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[---]]></summary>
+        <content type="html"><![CDATA[<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="quic-简介">QUIC 简介<a href="https://ui4freedom.org/UIF_help/blog/quic#quic-%E7%AE%80%E4%BB%8B" class="hash-link" aria-label="Direct link to QUIC 简介" title="Direct link to QUIC 简介" translate="no">​</a></h2>
+<p>QUIC 是基于 UDP 的传输层协议，减少了建立链接所需的 RTT，解决了多路复用所带来的问题。基于 QUIC 的 HTTP 已经被标准委员会接收成为 <code>HTTP3</code>。</p>
+<p>**在可预见的未来，HTTP3 将会被广泛使用。**目前，谷歌全系产品已支持 QUIC。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="多路复用所带来的问题">多路复用所带来的问题<a href="https://ui4freedom.org/UIF_help/blog/quic#%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%E6%89%80%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98" class="hash-link" aria-label="Direct link to 多路复用所带来的问题" title="Direct link to 多路复用所带�来的问题" translate="no">​</a></h2>
+<p><code>HTTP2</code>是基于 TCP 复用的，虽然可以减少建立链接的延迟，但是传输效率不高，主要的原因是<code>队头阻塞</code>，也就是 A 必须要先于 B，如果即使 B 先到达了目标网络，A 丢失了需要重传，B 也必须要等待 A，即使 B 已经成功被接收了。</p>
+<p><code>队头阻塞</code> 不单单是 TCP 的原因，也有 TLS 的原因。因为 TLS 也有保证正确接收顺序的功能。所以，想要彻底解决这个问题，QUIC 必须要结合 TLS。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="基于-udp-的-quic">基于 UDP 的 QUIC<a href="https://ui4freedom.org/UIF_help/blog/quic#%E5%9F%BA%E4%BA%8E-udp-%E7%9A%84-quic" class="hash-link" aria-label="Direct link to 基于 UDP 的 QUIC" title="Direct link to 基于 UDP 的 QUIC" translate="no">​</a></h2>
+<p>基于 UDP 是必然的选择，因为我们不可能网络层重新设计一个传输层协议，这样做的成本是巨大的；参考 IPv6，不兼用带来的成本使得设备产商和使用不积极推广更加先进的协议。</p>
+<p>可能有人会疑虑：</p>
+<blockquote>
+<p>UDP 会被运营商 QOS，俗称限速。这样会导致 QUIC 的带宽性能不佳。</p>
+</blockquote>
+<p>我们认为 UDP 传输质量不佳，大概率是因为运营商对 UDP NAT 支持不佳导致的。使用 UDP 并不能突破运营商对网络带宽的限制。</p>
+<p>参考这篇文章 <a href="https://github.com/xtaci/kcptun/issues/776" target="_blank" rel="noopener noreferrer" class="">#776</a>，其中提到：</p>
+<blockquote>
+<p>这种现象很明显，比如你刚开始测试 kcptun 开启的一段时间，速度是挺快，但是挂久了，就变得非常慢，这时候，只需要释放掉隧道，重新发起新隧道即可</p>
+</blockquote>
+<p>因为 NAT 的原因，QUIC 也有心跳包的设计，用于维护 UDP session，保持路由器能够正确地转发。但是有些路由器可能图省事，一定时间后无论是否活跃都会直接关闭；这样一来，即节省了带宽内存，又不违反 UDP 协议。</p>
+<p>一旦随着 HTTP3 的广泛应用，在激烈的竞争环境下，所谓有 QOS 的运营商会被消费者淘汰。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="quic-的多路复用">QUIC 的多路复用<a href="https://ui4freedom.org/UIF_help/blog/quic#quic-%E7%9A%84%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8" class="hash-link" aria-label="Direct link to QUIC 的多路复用" title="Direct link to QUIC 的多路复用" translate="no">​</a></h2>
+<p>QUIC 在用户层 <code>管理链接（Connection）</code> 和实现<code>拥塞控制</code>。并且使用 Connection ID 来标记每一条链接，不再使用传统的 IP 四元组，也就是说 QUIC 的链接是 IP 无关的。</p>
+<p>无论客户端走到哪里，只要有 Connection ID，就可以被服务端识别到。在移动的网络环境中，这样做有巨大好处，例如乘坐汽车、高铁等交通工具时，即使不断更换网络（IP），也无需重新与服务器建立链接后再传输数据。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="与-tls-安全协议高度集成">与 TLS 安全协议高度集成<a href="https://ui4freedom.org/UIF_help/blog/quic#%E4%B8%8E-tls-%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE%E9%AB%98%E5%BA%A6%E9%9B%86%E6%88%90" class="hash-link" aria-label="Direct link to 与 TLS 安全协议高度集成" title="Direct link to 与 TLS 安全协议高度集成" translate="no">​</a></h2>
+<p>QUIC 是强制使用 TLS 的。</p>
+<p>上文提到，TLS 也有<code>队头阻塞</code>的问题。为了解决这个问题，QUIC 修改了 TLS 协议，仅使用由 TLS 协商出的秘钥，由 QUIC 来保证传输顺序正确，也就是 TLS 仅在握手阶段被使用到。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="代理协议">代理协议<a href="https://ui4freedom.org/UIF_help/blog/quic#%E4%BB%A3%E7%90%86%E5%8D%8F%E8%AE%AE" class="hash-link" aria-label="Direct link to 代理协议" title="Direct link to 代理协议" translate="no">​</a></h2>
+<p>像 HTTP 和 Sock5 等基于传输层的代理协议，根据网络协议的制定原则，他们是不会规定传输的具体内容的，也就是说可以根据用户的意愿自由替换使用传输层。</p>
+<p>一个较早实现基于 QUIC 的代理工具有 <a href="https://github.com/v2fly/v2ray-core" target="_blank" rel="noopener noreferrer" class="">v2ray</a>，他可搭配各种传输层+代理层的组合。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="udp-的传输">UDP 的传输<a href="https://ui4freedom.org/UIF_help/blog/quic#udp-%E7%9A%84%E4%BC%A0%E8%BE%93" class="hash-link" aria-label="Direct link to UDP 的传输" title="Direct link to UDP 的传输" translate="no">​</a></h2>
+<p>需要传输 UDP 数据的场景，一般都是 VPN 所需要的。他们会截获操作系统的所有流量（包括 DNS），然后传输到代理服务器。</p>
+<p>在此之前，我们一般把 UDP 数据放在传输层中，也就是 UDP over TCP。 在 QUIC 中也是可以大同小异，UDP over QUIC。</p>
+<p>但是有一个问题，假如这个 UDP 是 QUIC，即 QUIC over QUIC，传输层再加上一个传输层，这又会造成本来我们要解决的 <code>队头阻塞</code>。因此，在代理社区中，一般建议用户禁用 443 UDP 端口，来规避这个问题。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="终极解决方案">终极解决方案<a href="https://ui4freedom.org/UIF_help/blog/quic#%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88" class="hash-link" aria-label="Direct link to 终极解决方案" title="Direct link to 终极解决方案" translate="no">​</a></h2>
+<p>QUIC 还设计了 UDP 传输模式，也就是说使用该模式传输的数据，将与正常 UDP 传输数据无异（加密除外）。从理论上来说，UDP over UDP 就是终极解决方案。</p>
+<p>比如说 <a href="https://github.com/EAimTY/tuic" target="_blank" rel="noopener noreferrer" class="">TUIC</a> 就是基于 QUIC 的代理协议。拥有 QUIC 的优点：超低的延迟、完全的多路复用、UDP 代理（目前已被删库，请使用 Hysteria2 代替）。</p>
+<hr>
+<p>UIF 支持使用 <a href="https://github.com/EAimTY/tuic" target="_blank" rel="noopener noreferrer" class="">Hysteria2</a>，欢迎大家使用。</p>]]></content>
+        <author>
+            <name>UIF Official</name>
+            <uri>https://github.com/UIforFreedom/UIF</uri>
+        </author>
+        <category label="代理技术" term="代理技术"/>
+        <category label="UDP" term="UDP"/>
+        <category label="加密" term="加密"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Welcome]]></title>
+        <id>https://ui4freedom.org/UIF_help/blog/welcome</id>
+        <link href="https://ui4freedom.org/UIF_help/blog/welcome"/>
+        <updated>2023-08-03T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[---]]></summary>
+        <content type="html"><![CDATA[<hr>
+<h1>欢迎</h1>
+<p>UIF 是一个全平台可用，基于 <a href="https://github.com/SagerNet/sing-box" target="_blank" rel="noopener noreferrer" class="">Sing-Box</a> 的第三方客户端。</p>
+<p>你可以直接打开 <a href="https://uiforfreedom.github.io/" target="_blank" rel="noopener noreferrer" class="">uiforfreedom.github.io</a> 浏览 UIF 的全部功能，但想要在本地使用，UIF 后端是必须的。</p>
+<p><strong>查看 <a href="https://uiforfreedom.github.io/UIF_help/docs/quic/intro" target="_blank" rel="noopener noreferrer" class="">快速使用教程</a></strong></p>
+<ul>
+<li class=""><a href="https://ui4freedom.org/UIF_help/assets/release/uif-windows-amd64.zip" target="_blank" rel="noopener noreferrer" class="">uif-windows-amd64.zip</a> (x64) (常见)</li>
+</ul>
+<ul>
+<li class="">
+<p><a href="https://ui4freedom.org/UIF_help/assets/release/uif-linux-amd64.tar.gz" target="_blank" rel="noopener noreferrer" class="">uif-linux-amd64.tar.gz</a> (x64) (常见)</p>
+</li>
+<li class="">
+<p><a href="https://ui4freedom.org/UIF_help/assets/release/uif-linux-arm64.tar.gz" target="_blank" rel="noopener noreferrer" class="">uif-linux-arm64.tar.gz</a></p>
+</li>
+<li class="">
+<p><a href="https://ui4freedom.org/UIF_help/assets/release/uif-linux-armv7.tar.gz" target="_blank" rel="noopener noreferrer" class="">uif-linux-armv7.tar.gz</a></p>
+</li>
+<li class="">
+<p><a href="https://ui4freedom.org/UIF_help/assets/release/linux_install.sh" target="_blank" rel="noopener noreferrer" class="">linux_install.sh</a></p>
+</li>
+<li class="">
+<p><a href="https://ui4freedom.org/UIF_help/assets/release/ui4freedom.service" target="_blank" rel="noopener noreferrer" class="">ui4freedom.service</a></p>
+</li>
+<li class="">
+<p><a href="https://ui4freedom.org/UIF_help/assets/release/ui4freedom.sh" target="_blank" rel="noopener noreferrer" class="">ui4freedom.sh</a></p>
+</li>
+<li class="">
+<p><a href="https://ui4freedom.org/UIF_help/assets/release/version/core.txt" target="_blank" rel="noopener noreferrer" class="">core.txt</a></p>
+</li>
+<li class="">
+<p><a href="https://ui4freedom.org/UIF_help/assets/release/version/uif.txt" target="_blank" rel="noopener noreferrer" class="">uif.txt</a></p>
+</li>
+</ul>]]></content>
+        <author>
+            <name>UIF Official</name>
+            <uri>https://github.com/UIforFreedom/UIF</uri>
+        </author>
+        <category label="UIF 翻墙" term="UIF 翻墙"/>
+        <category label="翻墙 UI" term="翻墙 UI"/>
+        <category label="翻墙图形化客户端" term="翻墙图形化客户端"/>
+        <category label="翻墙面板" term="翻墙面板"/>
+        <category label="翻墙一键脚本" term="翻墙一键脚本"/>
+        <category label="VPN 翻墙" term="VPN 翻墙"/>
+        <category label="WebUI 翻墙" term="WebUI 翻墙"/>
+        <category label="x-ui" term="x-ui"/>
+        <category label="xray" term="xray"/>
+        <category label="v2ray" term="v2ray"/>
+        <category label="clash" term="clash"/>
+        <category label="shadowsocks" term="shadowsocks"/>
+        <category label="v2rayN" term="v2rayN"/>
+        <category label="梯子" term="梯子"/>
+        <category label="OpenWrt 科学上网" term="OpenWrt 科学上网"/>
+        <category label="clash for windows 替代品， Sing-Box x-ui 面板" term="clash for windows 替代品， Sing-Box x-ui 面板"/>
+        <category label="Sing-Box 简易使用" term="Sing-Box 简易使用"/>
+        <category label="Sing-Box UI" term="Sing-Box UI"/>
+        <category label="Sing-Box 图形化客户端" term="Sing-Box 图形化客户端"/>
+        <category label="Sing-Box Windows 客户端" term="Sing-Box Windows 客户端"/>
+        <category label="Sing-Box Linux 客户端" term="Sing-Box Linux 客户端"/>
+        <category label="Sing-Box Macos 客户端" term="Sing-Box Macos 客户端"/>
+        <category label="Sing-Box OpenWrt 翻墙" term="Sing-Box OpenWrt 翻墙"/>
+        <category label="Sing-Box OpenWrt 科学上网" term="Sing-Box OpenWrt 科学上网"/>
+        <category label="Sing-Box 屏蔽广告" term="Sing-Box 屏蔽广告"/>
+    </entry>
+</feed>

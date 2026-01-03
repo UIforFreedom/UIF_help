@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkmy_website=globalThis.webpackChunkmy_website||[]).push([[5505],{9847(e){e.exports=JSON.parse('{"authors":[{"name":"UIF Official","title":"UIF \u5b98\u65b9","url":"https://github.com/UIforFreedom/UIF","imageURL":"https://avatars.githubusercontent.com/u/140743845?s=48&v=4","key":"uif","page":null,"count":10}]}')}}]);
